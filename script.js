@@ -75,49 +75,28 @@ function processOrder() {
 }
 
 /* ============================
-   SUBSCRIBE FORM 
+   SUBSCRIBE FORM
 ============================ */
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const subscribeForm = document.getElementById("subscribe-form");
-  const subscribeEmail = document.getElementById("subscribeEmail");
 
-  if (!subscribeForm || !subscribeEmail) return;
+  if (subscribeForm) {
+    subscribeForm.addEventListener("submit", function (event) {
+      event.preventDefault();
 
-  subscribeForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // prevent page reload
-    event.stopPropagation();
+      const emailInput = document.getElementById("subscribeEmail").value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const emailInput = subscribeEmail.value.trim();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(emailInput)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
 
-    if (!emailPattern.test(emailInput)) {
-      alert("Please enter a valid email address.");
-      return;
-    }
-
-    alert(`Thank you for subscribing, ${emailInput}!`);
-    subscribeEmail.value = ""; // clear input
-  });
+      alert(`Thank you for subscribing, ${emailInput}!`);
+      subscribeForm.reset();
+    });
+  }
 });
-
-/* ============================
-   SUBSCRIBE POPUP FUNCTIONS
-============================ */
-function showSubscribePopup(message) {
-  const popup = document.getElementById("subscribePopup");
-  const popupMessage = document.getElementById("popupMessage");
-
-  if (!popup || !popupMessage) return;
-
-  popupMessage.textContent = message;
-  popup.style.display = "flex";
-}
-
-function closeSubscribePopup() {
-  const popup = document.getElementById("subscribePopup");
-  if (!popup) return;
-  popup.style.display = "none";
-}
 
 /* ============================
    CLICK OUTSIDE MODAL TO CLOSE
@@ -132,82 +111,81 @@ window.onclick = function (event) {
 /* ============================
    Client Feedback & Custom Orders
 ============================ */
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const feedbackForm = document.getElementById("feedbackForm");
-  const feedbackMessage = document.getElementById("feedbackMessage");
+  const subscribeForm = document.getElementById("subscribe-form");
 
-  if (!feedbackForm || !feedbackMessage) return;
+  if (feedbackForm) {
+    feedbackForm.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-  feedbackForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+      // Get input values
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+      const email = document.getElementById("emailAddress").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const city = document.getElementById("city").value.trim();
+      const state = document.getElementById("state").value.trim();
+      const zip = document.getElementById("zip").value.trim();
+      const message = document.getElementById("message").value.trim();
 
-    // Get input values
-    const firstName = document.getElementById("firstName").value.trim();
-    const lastName = document.getElementById("lastName").value.trim();
-    const email = document.getElementById("emailAddress").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const address = document.getElementById("address").value.trim();
-    const city = document.getElementById("city").value.trim();
-    const state = document.getElementById("state").value.trim();
-    const zip = document.getElementById("zip").value.trim();
-    const message = document.getElementById("message").value.trim();
+      // Validation patterns
+      const namePattern = /^[A-Za-z\s'-]{1,30}$/;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phonePattern = /^\d{3}[-\s]?\d{3}[-\s]?\d{4}$/;
+      const zipPattern = /^\d{5}(-\d{4})?$/;
+      const addressPattern = /^.{1,100}$/;
+      const cityPattern = /^[A-Za-z\s]{1,50}$/;
+      const statePattern = /^[A-Za-z\s]{1,50}$/;
+      const messagePattern = /^.{1,500}$/;
 
-    // Validation patterns
-    const namePattern = /^[A-Za-z\s'-]{1,30}$/;
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phonePattern = /^\d{3}[-\s]?\d{3}[-\s]?\d{4}$/;
-    const zipPattern = /^\d{5}(-\d{4})?$/;
-    const addressPattern = /^.{1,100}$/;
-    const cityPattern = /^[A-Za-z\s]{1,50}$/;
-    const statePattern = /^[A-Za-z\s]{1,50}$/;
-    const messagePattern = /^.{1,500}$/;
+      // Validate names
+      if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
+        alert("Please enter valid first and last names (letters only, max 30 characters).");
+        return;
+      }
 
-    if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
-      feedbackMessage.textContent = "Please enter valid first and last names (letters only, max 30 characters).";
-      feedbackMessage.style.color = "red";
-      return;
-    }
+      // Validate email
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
 
-    if (!emailPattern.test(email)) {
-      feedbackMessage.textContent = "Please enter a valid email address.";
-      feedbackMessage.style.color = "red";
-      return;
-    }
+      // Validate phone
+      if (!phonePattern.test(phone)) {
+        alert("Please enter a valid phone number (e.g., 123-456-7890).");
+        return;
+      }
 
-    if (!phonePattern.test(phone)) {
-      feedbackMessage.textContent = "Please enter a valid phone number (e.g., 123-456-7890).";
-      feedbackMessage.style.color = "red";
-      return;
-    }
+      // Validate address, city, state, zip
+      if (!addressPattern.test(address) || !cityPattern.test(city) || !statePattern.test(state) || !zipPattern.test(zip)) {
+        alert("Please enter valid address, city, state, and zip code.");
+        return;
+      }
 
-    if (!addressPattern.test(address) || !cityPattern.test(city) || !statePattern.test(state) || !zipPattern.test(zip)) {
-      feedbackMessage.textContent = "Please enter valid address, city, state, and zip code.";
-      feedbackMessage.style.color = "red";
-      return;
-    }
+      // Validate message
+      if (!messagePattern.test(message)) {
+        alert("Message is required and cannot exceed 500 characters.");
+        return;
+      }
 
-    if (!messagePattern.test(message)) {
-      feedbackMessage.textContent = "Message is required and cannot exceed 500 characters.";
-      feedbackMessage.style.color = "red";
-      return;
-    }
+      // Save feedback
+      const feedbackData = {
+        firstName,
+        lastName,
+        email,
+        phone,
+        address,
+        city,
+        state,
+        zip,
+        message
+      };
 
-    const feedbackData = {
-      firstName,
-      lastName,
-      email,
-      phone,
-      address,
-      city,
-      state,
-      zip,
-      message
-    };
-
-    localStorage.setItem("clientFeedback", JSON.stringify(feedbackData));
-
-    feedbackMessage.textContent = `Thank you for your message, ${firstName} ${lastName}!`;
-    feedbackMessage.style.color = "green";
-    feedbackForm.reset();
-  });
+      localStorage.setItem("clientFeedback", JSON.stringify(feedbackData));
+      alert(`Thank you for your message, ${firstName} ${lastName}!`);
+      feedbackForm.reset();
+    });
+  }
 });
