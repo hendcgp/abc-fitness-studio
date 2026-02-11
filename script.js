@@ -75,7 +75,7 @@ function processOrder() {
 }
 
 /* ============================
-   SUBSCRIBE FORM (POPUP)
+   SUBSCRIBE FORM 
 ============================ */
 document.addEventListener("DOMContentLoaded", function () {
   const subscribeForm = document.getElementById("subscribe-form");
@@ -84,19 +84,19 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!subscribeForm || !subscribeEmail) return;
 
   subscribeForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+    event.preventDefault(); // prevent page reload
     event.stopPropagation();
 
     const emailInput = subscribeEmail.value.trim();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailPattern.test(emailInput)) {
-      showSubscribePopup("Please enter a valid email address.");
+      alert("Please enter a valid email address.");
       return;
     }
 
-    showSubscribePopup(`Thank you for subscribing, ${emailInput}!`);
-    subscribeEmail.value = "";
+    alert(`Thank you for subscribing, ${emailInput}!`);
+    subscribeEmail.value = ""; // clear input
   });
 });
 
