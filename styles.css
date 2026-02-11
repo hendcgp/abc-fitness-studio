@@ -49,7 +49,7 @@ body, p {
   --lime-lift: #DEF479;
   --endurance-white: #FCFCFC;
   --detritus-green: #519C4F;
-  --footer-hover: #2343BD;
+  --footer-hover: #2343BD; /* For homepage product hover */
 }
 
 /* ============================
@@ -91,9 +91,7 @@ header, footer {
 }
 
 .header-nav a {
-  display: inline-block;
   margin: 0 15px;
-  padding: 10px;
   text-decoration: none;
   font-family: Arial, sans-serif;
   font-weight: bold;
@@ -156,6 +154,7 @@ main {
   line-height: 1.6;
 }
 
+
 /* ============================
    PRODUCT BUTTONS
 ============================ */
@@ -177,7 +176,6 @@ main {
   text-decoration: none;
   border-radius: 4px;
   transition: all 0.3s ease;
-  min-height: 44px;
 }
 
 .product-btn:hover {
@@ -188,7 +186,7 @@ main {
 /* ============================
    TABLE STYLES
 ============================ */
-.hours-table {
+.hours-table, .gallery-table {
   width: 80%;
   max-width: 900px;
   border-collapse: collapse;
@@ -196,7 +194,8 @@ main {
 }
 
 .hours-table th, 
-.hours-table td {
+.hours-table td,
+.gallery-table td {
   border: 1px solid var(--brisk-blue);
   padding: 10px;
   text-align: center;
@@ -216,6 +215,7 @@ form {
   padding: 10px;
 }
 
+/* Two-column layout for form rows */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -248,9 +248,8 @@ form label {
 }
 
 /* Buttons */
-form button,
-button {
-  padding: 12px 20px;
+form button {
+  padding: 10px 20px;
   font-weight: bold;
   border-radius: 4px;
   border: none;
@@ -258,10 +257,42 @@ button {
   background-color: var(--intensity-indigo);
   color: white;
   transition: 0.3s ease;
-  min-height: 44px;
 }
 
-form button:hover,
+form button:hover {
+  background-color: var(--lime-lift);
+  color: var(--brisk-blue);
+}
+
+.clear-btn {
+  background-color: #777;
+}
+
+.clear-btn:hover {
+  background-color: #555;
+}
+
+/* Responsive: single column for mobile */
+@media (max-width: 700px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+/* ============================
+   BUTTONS
+============================ */
+button {
+  background-color: var(--intensity-indigo);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
 button:hover {
   background-color: var(--lime-lift);
   color: var(--brisk-blue);
@@ -278,7 +309,8 @@ button:hover {
 /* ============================
    FOOTER
 ============================ */
-.social-links a {
+.social-links a,
+.footer-nav a {
   margin: 0 8px;
   text-decoration: none;
   font-family: Arial, sans-serif;
@@ -287,30 +319,19 @@ button:hover {
   color: var(--brisk-blue);
 }
 
-.social-links a:hover {
+.social-links a:hover,
+.footer-nav a:hover {
   color: var(--lime-lift);
 }
 
 /* ============================
    GALLERY
 ============================ */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  max-width: 1000px;
-  margin: 20px auto;
-}
-
-.gallery-item {
+.gallery-table td {
   background-color: white;
-  border: 1px solid var(--brisk-blue);
-  border-radius: 6px;
-  padding: 10px;
-  text-align: center;
 }
 
-.gallery-item img {
+.gallery-table img {
   max-width: 100%;
   height: 150px;
   object-fit: cover;
@@ -318,6 +339,7 @@ button:hover {
 
 .view-cart-btn {
   margin-bottom: 15px;
+  float: right;
 }
 
 /* ============================
@@ -338,7 +360,7 @@ button:hover {
   background-color: white;
   margin: 10% auto;
   padding: 20px;
-  width: 90%;
+  width: 80%;
   max-width: 500px;
   border-radius: 8px;
 }
@@ -357,17 +379,4 @@ button:hover {
   max-width: 75%;
   height: auto;
   margin-bottom: 20px;
-}
-
-/* ============================
-   RESPONSIVE
-============================ */
-@media (max-width: 700px) {
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-
-  .homepage-image {
-    max-width: 100%;
-  }
 }
