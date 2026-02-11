@@ -82,27 +82,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const subscribeMessage = document.getElementById("subscribeMessage");
   const subscribeEmail = document.getElementById("subscribeEmail");
 
-  if (subscribeForm) {
-    subscribeForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
+  if (!subscribeForm || !subscribeMessage || !subscribeEmail) return;
 
-      const emailInput = subscribeEmail.value.trim();
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  subscribeForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
 
-      if (!emailPattern.test(emailInput)) {
-        subscribeMessage.textContent = "Please enter a valid email address.";
-        subscribeMessage.style.color = "red";
-        return false;
-      }
+    const emailInput = subscribeEmail.value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      subscribeMessage.textContent = `Thank you for subscribing, ${emailInput}!`;
-      subscribeMessage.style.color = "green";
-      subscribeEmail.value = "";
-      return false;
-    });
-  }
+    if (!emailPattern.test(emailInput)) {
+      subscribeMessage.textContent = "Please enter a valid email address.";
+      subscribeMessage.style.color = "red";
+      return;
+    }
+
+    subscribeMessage.textContent = "Thank you for subscribing!";
+    subscribeMessage.style.color = "green";
+    subscribeEmail.value = "";
+  });
 });
+
 
 /* ============================
    CLICK OUTSIDE MODAL TO CLOSE
