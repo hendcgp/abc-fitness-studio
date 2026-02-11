@@ -75,9 +75,9 @@ function processOrder() {
 }
 
 /* ============================
-   SUBSCRIBE FORM (FIXED – NO FLUSH)
+   SUBSCRIBE FORM (BULLETPROOF – NO FLASH)
 ============================ */
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
   const subscribeForm = document.getElementById("subscribe-form");
   const subscribeMessage = document.getElementById("subscribeMessage");
   const subscribeEmail = document.getElementById("subscribeEmail");
@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (subscribeForm) {
     subscribeForm.addEventListener("submit", function (event) {
       event.preventDefault();
+      event.stopPropagation();
 
       const emailInput = subscribeEmail.value.trim();
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -92,14 +93,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!emailPattern.test(emailInput)) {
         subscribeMessage.textContent = "Please enter a valid email address.";
         subscribeMessage.style.color = "red";
-        return;
+        return false;
       }
 
       subscribeMessage.textContent = `Thank you for subscribing, ${emailInput}!`;
       subscribeMessage.style.color = "green";
-
-      // Clear only the input — keep message visible
       subscribeEmail.value = "";
+      return false;
     });
   }
 });
@@ -117,7 +117,7 @@ window.onclick = function (event) {
 /* ============================
    Client Feedback & Custom Orders (NO ALERTS)
 ============================ */
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
   const feedbackForm = document.getElementById("feedbackForm");
   const feedbackMessage = document.getElementById("feedbackMessage");
 
@@ -146,42 +146,36 @@ document.addEventListener("DOMContentLoaded", () => {
       const statePattern = /^[A-Za-z\s]{1,50}$/;
       const messagePattern = /^.{1,500}$/;
 
-      // Validate names
       if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
         feedbackMessage.textContent = "Please enter valid first and last names (letters only, max 30 characters).";
         feedbackMessage.style.color = "red";
         return;
       }
 
-      // Validate email
       if (!emailPattern.test(email)) {
         feedbackMessage.textContent = "Please enter a valid email address.";
         feedbackMessage.style.color = "red";
         return;
       }
 
-      // Validate phone
       if (!phonePattern.test(phone)) {
         feedbackMessage.textContent = "Please enter a valid phone number (e.g., 123-456-7890).";
         feedbackMessage.style.color = "red";
         return;
       }
 
-      // Validate address, city, state, zip
       if (!addressPattern.test(address) || !cityPattern.test(city) || !statePattern.test(state) || !zipPattern.test(zip)) {
         feedbackMessage.textContent = "Please enter valid address, city, state, and zip code.";
         feedbackMessage.style.color = "red";
         return;
       }
 
-      // Validate message
       if (!messagePattern.test(message)) {
         feedbackMessage.textContent = "Message is required and cannot exceed 500 characters.";
         feedbackMessage.style.color = "red";
         return;
       }
 
-      // Save feedback
       const feedbackData = {
         firstName,
         lastName,
