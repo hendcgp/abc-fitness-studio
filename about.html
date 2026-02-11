@@ -1,4 +1,4 @@
-update the js script also do the same to this html <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@ update the js script also do the same to this html <!DOCTYPE html>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header -->
+ <!-- Header -->
   <header>
     <div class="header-container">
       <!-- Logo + Title -->
@@ -26,16 +26,16 @@ update the js script also do the same to this html <!DOCTYPE html>
     </div>
   </header>
 
-  <main>
-    <!-- About Section -->
-    <section class="about-intro-left">
-      <h2>About ABC Fitness Studio</h2>
-      <p>
-        ABC Fitness Studio is a local fitness haven specializing in a diverse range of classes, including yoga, Pilates, and Zumba, all geared toward promoting a healthy and active lifestyle. With a commitment to well-being, it aims to provide its community with a welcoming space for physical and mental wellness. Additionally, it offers a selection of high-quality fitness and training equipment to support its clients’ fitness journeys. In the absence of an online presence, it aspires to create a website that embodies its values of balance, harmony, and active living. Its target audience comprises local individuals seeking fitness and holistic health solutions, and its primary goal is to enhance visibility; foster community connections; and facilitate class inquiries, bookings, and equipment purchases.
-      </p>
-    </section>
 
-    <!-- Hours of Operation -->
+<main>
+ <section class="about-intro-left">
+  <h2>About ABC Fitness Studio</h2>
+  <p>
+    ABC Fitness Studio is a local fitness haven specializing in a diverse range of classes, including yoga, Pilates, and Zumba, all geared toward promoting a healthy and active lifestyle. With a commitment to well-being, it aims to provide its community with a welcoming space for physical and mental wellness. Additionally, it offers a selection of high-quality fitness and training equipment to support its clients’ fitness journeys. In the absence of an online presence, it aspires to create a website that embodies its values of balance, harmony, and active living. Its target audience comprises local individuals seeking fitness and holistic health solutions, and its primary goal is to enhance visibility; foster community connections; and facilitate class inquiries, bookings, and equipment purchases.
+  </p>
+</section>
+
+
     <h2>Hours of Operation</h2>
     <table class="hours-table">
       <tr><th>Day</th><th>Hours</th></tr>
@@ -43,94 +43,78 @@ update the js script also do the same to this html <!DOCTYPE html>
       <tr><td>Saturday</td><td>8 a.m. – 6 p.m.</td></tr>
       <tr><td>Sunday</td><td>Closed</td></tr>
     </table>
+  </section>
 
-    <!-- Feedback / Custom Orders Form -->
-    <section>
-      <h2>Client Feedback & Custom Orders</h2>
-      <form id="feedbackForm">
-        <!-- Row 1 -->
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" maxlength="30" required>
-          </div>
-          <div class="form-group">
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" maxlength="30" required>
-          </div>
-        </div>
+  <section>
+    <h2>Client Feedback & Custom Orders</h2>
+    <form id="feedbackForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
 
-        <!-- Row 2 -->
-        <div class="form-row">
-          <div class="form-group">
-            <label for="emailAddress">Email:</label>
-            <input type="email" id="emailAddress" maxlength="50" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" maxlength="12" placeholder="123-456-7890" required>
-          </div>
-        </div>
+      <label for="emailAddress">Email:</label>
+      <input type="email" id="emailAddress" required>
 
-        <!-- Row 3 -->
-        <div class="form-row">
-          <div class="form-group">
-            <label for="address">Address:</label>
-            <input type="text" id="address" maxlength="100" required>
-          </div>
-          <div class="form-group">
-            <label for="city">City:</label>
-            <input type="text" id="city" maxlength="50" required>
-          </div>
-        </div>
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" required>
 
-        <!-- Row 4 -->
-        <div class="form-row">
-          <div class="form-group">
-            <label for="state">State:</label>
-            <input type="text" id="state" maxlength="50" required>
-          </div>
-          <div class="form-group">
-            <label for="zip">Zip Code:</label>
-            <input type="text" id="zip" maxlength="10" required>
-          </div>
-        </div>
+      <label for="address">Address:</label>
+      <input type="text" id="address" required>
 
-        <!-- Message full width -->
-        <div class="form-row">
-          <div class="form-group full-width">
-            <label for="message">Message / Custom Order:</label>
-            <textarea id="message" maxlength="500" required></textarea>
-          </div>
-        </div>
+      <label for="message">Message or Custom Order:</label>
+      <textarea id="message" required></textarea>
 
-        <!-- Buttons -->
-        <div class="form-row full-width">
-          <button type="submit">Submit</button>
-          <button type="reset" class="clear-btn">Clear Form</button>
-        </div>
-      </form>
-    </section>
-  </main>
+      <button type="submit">Submit</button>
+      <button type="reset" class="clear-btn">Clear Form</button>
+    </form>
+  </section>
+</main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <form id="subscribe-form">
-        <label for="subscribeEmail">Subscribe to our newsletter:</label>
-        <input type="email" id="subscribeEmail" required>
-        <button type="submit">Subscribe</button>
-      </form>
+<footer>
+  <div class="footer-container">
+    <form id="subscribe-form">
+      <label for="subscribeEmail">Subscribe to our newsletter:</label>
+      <input type="email" id="subscribeEmail" required>
+      <button type="submit">Subscribe</button>
+    </form>
 
-      <div class="social-links">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">Twitter</a>
-      </div>
+    <div class="social-links">
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">Twitter</a>
+    </div>
 
-      </div>
-  </footer>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="community.html">Community</a>
+    </nav>
+  </div>
+</footer>
 
-  <script src="script.js"></script>
+<script>
+document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const feedbackData = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("emailAddress").value,
+    phone: document.getElementById("phone").value,
+    address: document.getElementById("address").value,
+    message: document.getElementById("message").value,
+    customOrder: document.getElementById("customOrder").checked
+  };
+
+  localStorage.setItem("clientFeedback", JSON.stringify(feedbackData));
+  alert(`Thank you for your message, ${feedbackData.name}!`);
+  this.reset();
+});
+
+document.getElementById("subscribe-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  alert("Thank you for subscribing!");
+  this.reset();
+});
+</script>
 </body>
 </html>
