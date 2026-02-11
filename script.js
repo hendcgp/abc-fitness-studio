@@ -75,17 +75,18 @@ function processOrder() {
 }
 
 /* ============================
-   SUBSCRIBE FORM (NO ALERTS)
+   SUBSCRIBE FORM (FIXED – NO FLUSH)
 ============================ */
 document.addEventListener("DOMContentLoaded", () => {
   const subscribeForm = document.getElementById("subscribe-form");
   const subscribeMessage = document.getElementById("subscribeMessage");
+  const subscribeEmail = document.getElementById("subscribeEmail");
 
   if (subscribeForm) {
     subscribeForm.addEventListener("submit", function (event) {
       event.preventDefault();
 
-      const emailInput = document.getElementById("subscribeEmail").value.trim();
+      const emailInput = subscribeEmail.value.trim();
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       if (!emailPattern.test(emailInput)) {
@@ -96,7 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       subscribeMessage.textContent = `Thank you for subscribing, ${emailInput}!`;
       subscribeMessage.style.color = "green";
-      subscribeForm.reset();
+
+      // Clear only the input — keep message visible
+      subscribeEmail.value = "";
     });
   }
 });
