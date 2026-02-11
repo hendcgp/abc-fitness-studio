@@ -61,7 +61,13 @@
         <a href="#">Instagram</a>
         <a href="#">Twitter</a>
       </div>
-
+<script>
+  document.getElementById("subscribe-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  alert("Thank you for subscribing!");
+  this.reset();
+});
+</script>
 
   </footer>
 
