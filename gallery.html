@@ -5,17 +5,35 @@
   <title>ABC Fitness Studio | Gallery</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Slightly smaller gallery table */
+    .gallery-table {
+      width: 90%;        /* reduced from 100% */
+      max-width: 800px;  /* reduced from 900px */
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    .gallery-table td {
+      padding: 8px;      /* slightly smaller padding */
+      text-align: center;
+    }
+
+    .gallery-table img {
+      max-width: 90%;    /* scale images slightly smaller */
+      height: auto;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
 <header>
   <div class="header-container">
-    <!-- Logo + Title (Top Left) -->
     <div class="header-left">
       <img src="images/logo.png" alt="ABC Fitness Studio Logo" class="logo">
       <h1>ABC Fitness Studio</h1>
     </div>
 
-    <!-- Navigation (Centered Below) -->
     <nav class="header-nav">
       <a href="index.html">Home</a>
       <a href="gallery.html">Gallery</a>
@@ -26,7 +44,6 @@
 </header>
 
 <main>
-  <!-- View Cart aligned right -->
   <div style="width: 100%; text-align: right; margin-bottom: 15px;">
     <button class="view-cart-btn" onclick="openCart()">View Cart</button>
   </div>
@@ -99,8 +116,8 @@
       <a href="#">Instagram</a>
       <a href="#">Twitter</a>
     </div>
-
-    </footer>
+  </div>
+</footer>
 
 <div id="cartModal" class="modal">
   <div class="modal-content">
