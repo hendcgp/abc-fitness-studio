@@ -1,6 +1,6 @@
-/* ============================
-   SHOPPING CART
-============================ */
+// ============================
+// SHOPPING CART FUNCTIONS
+// ============================
 
 // Get cart from sessionStorage
 function getCart() {
@@ -60,7 +60,7 @@ function clearCart() {
   closeCart();
 }
 
-// Process order with validation
+// Process order
 function processOrder() {
   const cart = getCart();
 
@@ -74,9 +74,9 @@ function processOrder() {
   closeCart();
 }
 
-/* ============================
-   SUBSCRIBE FORM
-============================ */
+// ============================
+// SUBSCRIBE FORM
+// ============================
 document.addEventListener("DOMContentLoaded", () => {
   const subscribeForm = document.getElementById("subscribe-form");
 
@@ -98,9 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-/* ============================
-   CLICK OUTSIDE MODAL TO CLOSE
-============================ */
+// ============================
+// CLICK OUTSIDE MODAL TO CLOSE
+// ============================
 window.onclick = function (event) {
   const modal = document.getElementById("cartModal");
   if (event.target === modal) {
@@ -108,18 +108,16 @@ window.onclick = function (event) {
   }
 };
 
-/* ============================
-   Client Feedback & Custom Orders
-============================ */
+// ============================
+// CLIENT FEEDBACK FORM
+// ============================
 document.addEventListener("DOMContentLoaded", () => {
   const feedbackForm = document.getElementById("feedbackForm");
-  const subscribeForm = document.getElementById("subscribe-form");
 
   if (feedbackForm) {
     feedbackForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Get input values
       const firstName = document.getElementById("firstName").value.trim();
       const lastName = document.getElementById("lastName").value.trim();
       const email = document.getElementById("emailAddress").value.trim();
@@ -130,7 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const zip = document.getElementById("zip").value.trim();
       const message = document.getElementById("message").value.trim();
 
-      // Validation patterns
       const namePattern = /^[A-Za-z\s'-]{1,30}$/;
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const phonePattern = /^\d{3}[-\s]?\d{3}[-\s]?\d{4}$/;
@@ -140,37 +137,31 @@ document.addEventListener("DOMContentLoaded", () => {
       const statePattern = /^[A-Za-z\s]{1,50}$/;
       const messagePattern = /^.{1,500}$/;
 
-      // Validate names
       if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
         alert("Please enter valid first and last names (letters only, max 30 characters).");
         return;
       }
 
-      // Validate email
       if (!emailPattern.test(email)) {
         alert("Please enter a valid email address.");
         return;
       }
 
-      // Validate phone
       if (!phonePattern.test(phone)) {
         alert("Please enter a valid phone number (e.g., 123-456-7890).");
         return;
       }
 
-      // Validate address, city, state, zip
       if (!addressPattern.test(address) || !cityPattern.test(city) || !statePattern.test(state) || !zipPattern.test(zip)) {
         alert("Please enter valid address, city, state, and zip code.");
         return;
       }
 
-      // Validate message
       if (!messagePattern.test(message)) {
         alert("Message is required and cannot exceed 500 characters.");
         return;
       }
 
-      // Save feedback
       const feedbackData = {
         firstName,
         lastName,
