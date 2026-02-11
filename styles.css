@@ -302,9 +302,29 @@ button:hover {
 }
 
 .view-cart-btn {
-  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 15px;
 }
 
+.view-cart-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: var(--intensity-indigo);
+  color: white;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.view-cart-btn:hover {
+  background-color: var(--footer-hover);
+  color: white;
+}
 /* ============================
    MODAL
 ============================ */
@@ -343,5 +363,6 @@ button:hover {
   height: auto;
   margin-bottom: 20px;
 }
+
 
 
