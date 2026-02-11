@@ -9,11 +9,13 @@
 <body>
 <header>
   <div class="header-container">
+    <!-- Logo + Title (Top Left) -->
     <div class="header-left">
       <img src="images/logo.png" alt="ABC Fitness Studio Logo" class="logo">
       <h1>ABC Fitness Studio</h1>
     </div>
 
+    <!-- Navigation (Centered Below) -->
     <nav class="header-nav">
       <a href="index.html">Home</a>
       <a href="gallery.html">Gallery</a>
@@ -24,11 +26,10 @@
 </header>
 
 <main>
-  <div style="width: 100%; text-align: right; margin-bottom: 5px;">
+  <!-- View Cart aligned right -->
+  <div style="width: 100%; text-align: right; margin-bottom: 15px;">
     <button class="view-cart-btn" onclick="openCart()">View Cart</button>
   </div>
-
-  <h2>Our Classes & Products</h2>
 
   <table class="gallery-table">
     <tr>
@@ -77,9 +78,9 @@
         <button onclick="addToCart('Water Bottle')">Add to Cart</button>
       </td>
       <td>
-        <img src="images/Pic_09_Client2_TeeShirt.png" alt="T-Shirt">
-        <h3>T-Shirt</h3>
-        <button onclick="addToCart('T-Shirt')">Add to Cart</button>
+        <img src="images/PIc_09_Client2_TeeShirt.png" alt="Tee Shirt">
+        <h3>Tee Shirt</h3>
+        <button onclick="addToCart('Tee Shirt')">Add to Cart</button>
       </td>
     </tr>
   </table>
@@ -99,7 +100,13 @@
       <a href="#">Twitter</a>
     </div>
 
-    </div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="community.html">Community</a>
+    </nav>
+  </div>
 </footer>
 
 <div id="cartModal" class="modal">
@@ -112,7 +119,47 @@
   </div>
 </div>
 
-<!-- External JavaScript file -->
-<script src="script.js"></script>
+<script>
+function addToCart(item) {
+  let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+  cart.push(item);
+  sessionStorage.setItem("cart", JSON.stringify(cart));
+  alert("Item added.");
+}
+
+function openCart() {
+  const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+  const cartList = document.getElementById("cartItems");
+  cartList.innerHTML = "";
+  cart.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    cartList.appendChild(li);
+  });
+  document.getElementById("cartModal").style.display = "block";
+}
+
+function closeCart() {
+  document.getElementById("cartModal").style.display = "none";
+}
+
+function clearCart() {
+  sessionStorage.clear();
+  alert("Cart is cleared!");
+  closeCart();
+}
+
+function processOrder() {
+  sessionStorage.clear();
+  alert("Thank you for your order!");
+  closeCart();
+}
+
+document.getElementById("subscribe-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  alert("Thank you for subscribing!");
+  this.reset();
+});
+</script>
 </body>
 </html>
