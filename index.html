@@ -44,24 +44,21 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
+<footer>
+  <div class="footer-container">
+    <form id="subscribe-form">
+      <label for="subscribeEmail">Subscribe to our newsletter:</label>
+      <input type="email" id="subscribeEmail" required>
+      <button type="submit">Subscribe</button>
+    </form>
 
-      <!-- Newsletter Subscribe -->
-      <form id="subscribe-form">
-        <label for="email">Subscribe to our newsletter:</label>
-        <input type="email" id="email" required>
-        <button type="submit">Subscribe</button>
-      </form>
-
-      <!-- Social Media Links -->
-      <div class="social-links">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">Twitter</a>
-      </div>
-  </footer>
+    <div class="social-links">
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">Twitter</a>
+    </div>
+  </div>
+</footer>
 <script>
   document.getElementById("subscribe-form").addEventListener("submit", function(event) {
   event.preventDefault();
