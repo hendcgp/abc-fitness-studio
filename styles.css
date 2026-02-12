@@ -231,6 +231,34 @@ form label {
 }
 
 /* ============================
+   FEEDBACK FORM 
+============================ */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  flex: 1; /* each input takes equal space */
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  flex: 1 1 100%; /* message textarea spans full width */
+}
+
+/* Responsive: stack columns on small screens */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+
+/* ============================
    BUTTONS
 ============================ */
 button {
@@ -340,6 +368,7 @@ button:hover {
   height: auto;
   margin-bottom: 20px;
 }
+
 
 
 
