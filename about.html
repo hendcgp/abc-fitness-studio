@@ -5,9 +5,44 @@
   <title>ABC Fitness Studio | About Us</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Two-column layout for feedback form */
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full-width {
+      flex: 1 1 100%;
+    }
+
+    input, textarea, button {
+      padding: 8px;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* Optional: make two columns stack on small screens */
+    @media (max-width: 600px) {
+      .form-row {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-<!-- Header -->
 <header>
   <div class="header-container">
     <div class="header-left">
@@ -27,7 +62,7 @@
   <section class="about-intro-left">
     <h2>About ABC Fitness Studio</h2>
     <p>
-      ABC Fitness Studio is a local fitness haven specializing in a diverse range of classes, including yoga, Pilates, and Zumba, all geared toward promoting a healthy and active lifestyle. With a commitment to well-being, it aims to provide its community with a welcoming space for physical and mental wellness. Additionally, it offers a selection of high-quality fitness and training equipment to support its clients’ fitness journeys. Its target audience comprises local individuals seeking fitness and holistic health solutions, and its primary goal is to enhance visibility, foster community connections, and facilitate class inquiries, bookings, and equipment purchases.
+      ABC Fitness Studio is a local fitness haven specializing in a diverse range of classes, including yoga, Pilates, and Zumba. It offers high-quality equipment and a welcoming space for the community to pursue wellness and fitness.
     </p>
   </section>
 
@@ -139,7 +174,7 @@
     feedbacks.push(feedbackData);
     localStorage.setItem("clientFeedbacks", JSON.stringify(feedbacks));
 
-    alert(`Thank you for your message, ${feedbackData.firstName}!`);
+    alert(`Thank you for your message, ${feedbackData.firstName} ${feedbackData.lastName}!`);
     this.reset();
   });
 
