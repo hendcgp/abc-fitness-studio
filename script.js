@@ -1,3 +1,7 @@
+// ============================
+// SHOPPING CART FUNCTIONS
+// ============================
+
 let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
 // Add item to cart
@@ -54,7 +58,9 @@ function processOrder() {
   clearCart();
   closeCart();
 }
-
+// ============================
+// SUBSCRIBE FORM
+// ============================
 // Newsletter subscribe
 document.addEventListener("DOMContentLoaded", function () {
   const subscribeForm = document.getElementById("subscribe-form");
@@ -85,3 +91,86 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+// ============================
+// CLICK OUTSIDE MODAL TO CLOSE
+// ============================
+window.onclick = function (event) {
+  const modal = document.getElementById("cartModal");
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+};
+
+// ============================
+// CLIENT FEEDBACK FORM
+// ============================
+document.addEventListener("DOMContentLoaded", () => {
+  const feedbackForm = document.getElementById("feedbackForm");
+
+  if (feedbackForm) {
+    feedbackForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+      const email = document.getElementById("emailAddress").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const city = document.getElementById("city").value.trim();
+      const state = document.getElementById("state").value.trim();
+      const zip = document.getElementById("zip").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const namePattern = /^[A-Za-z\s'-]{1,30}$/;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phonePattern = /^\d{3}[-\s]?\d{3}[-\s]?\d{4}$/;
+      const zipPattern = /^\d{5}(-\d{4})?$/;
+      const addressPattern = /^.{1,100}$/;
+      const cityPattern = /^[A-Za-z\s]{1,50}$/;
+      const statePattern = /^[A-Za-z\s]{1,50}$/;
+      const messagePattern = /^.{1,500}$/;
+
+      if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
+        alert("Please enter valid first and last names (letters only, max 30 characters).");
+        return;
+      }
+
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      if (!phonePattern.test(phone)) {
+        alert("Please enter a valid phone number (e.g., 123-456-7890).");
+        return;
+      }
+
+      if (!addressPattern.test(address) || !cityPattern.test(city) || !statePattern.test(state) || !zipPattern.test(zip)) {
+        alert("Please enter valid address, city, state, and zip code.");
+        return;
+      }
+
+      if (!messagePattern.test(message)) {
+        alert("Message is required and cannot exceed 500 characters.");
+        return;
+      }
+
+      const feedbackData = {
+        firstName,
+        lastName,
+        email,
+        phone,
+        address,
+        city,
+        state,
+        zip,
+        message
+      };
+
+      localStorage.setItem("clientFeedback", JSON.stringify(feedbackData));
+      alert(`Thank you for your message, ${firstName} ${lastName}!`);
+      feedbackForm.reset();
+    });
+  }
+});
