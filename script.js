@@ -1,7 +1,3 @@
-/* ============================
-   SHOPPING CART
-============================ */
-
 let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
 // Add item to cart
@@ -13,7 +9,6 @@ function addToCart(itemName) {
 
 // Open cart modal
 function openCart() {
-  cart = JSON.parse(sessionStorage.getItem("cart")) || [];
   const cartList = document.getElementById("cartItems");
   cartList.innerHTML = "";
 
@@ -46,8 +41,6 @@ function clearCart() {
 
 // Process order
 function processOrder() {
-  cart = JSON.parse(sessionStorage.getItem("cart")) || [];
-
   if (cart.length === 0) {
     alert("Your cart is empty!");
     return;
@@ -62,10 +55,7 @@ function processOrder() {
   closeCart();
 }
 
-/* ============================
-   SUBSCRIBE FORM
-============================ */
-
+// Newsletter subscribe
 document.addEventListener("DOMContentLoaded", function () {
   const subscribeForm = document.getElementById("subscribe-form");
   const subscribeEmail = document.getElementById("subscribeEmail");
@@ -88,10 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-/* ============================
-   CLICK OUTSIDE MODAL TO CLOSE
-============================ */
-
+// Close modal when clicking outside
 window.onclick = function (event) {
   const modal = document.getElementById("cartModal");
   if (event.target === modal) {
