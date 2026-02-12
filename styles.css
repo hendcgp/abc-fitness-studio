@@ -244,7 +244,7 @@ form label {
   flex: 1; /* each input takes equal space */
   display: flex;
   flex-direction: column;
-  padding: 5px; /* padding inside each column */
+  padding: 10px; /* padding inside each column */
 }
 
 .form-group.full-width {
@@ -370,6 +370,7 @@ button:hover {
   height: auto;
   margin-bottom: 20px;
 }
+
 
 
 
