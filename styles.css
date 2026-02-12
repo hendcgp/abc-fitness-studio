@@ -236,7 +236,7 @@ form label {
 .form-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px; /* space between columns */
   margin-bottom: 15px;
 }
 
@@ -244,10 +244,12 @@ form label {
   flex: 1; /* each input takes equal space */
   display: flex;
   flex-direction: column;
+  padding: 5px; /* padding inside each column */
 }
 
 .form-group.full-width {
   flex: 1 1 100%; /* message textarea spans full width */
+  padding: 0 5px; /* optional small horizontal padding */
 }
 
 /* Responsive: stack columns on small screens */
@@ -368,6 +370,7 @@ button:hover {
   height: auto;
   margin-bottom: 20px;
 }
+
 
 
 
