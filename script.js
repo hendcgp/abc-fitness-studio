@@ -11,7 +11,7 @@ function addToCart(itemName) {
   alert(`${itemName} has been added to your cart.`);
 }
 
-// View cart modal
+// Open cart modal
 function openCart() {
   cart = JSON.parse(sessionStorage.getItem("cart")) || [];
   const cartList = document.getElementById("cartItems");
@@ -46,11 +46,9 @@ function clearCart() {
     return;
   }
 
-  // Clear cart
   cart = [];
   sessionStorage.removeItem("cart");
 
-  // Update cart display if modal is open
   const cartList = document.getElementById("cartItems");
   if (cartList) {
     cartList.innerHTML = "<li>Your cart is empty.</li>";
@@ -74,7 +72,6 @@ function processOrder() {
     `Thank you for your order!\n\nYour order of the following items has been processed:\n${itemList}`
   );
 
-  // Clear after order
   cart = [];
   sessionStorage.removeItem("cart");
   closeCart();
@@ -108,6 +105,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 };
+
 
 // ============================
 // CLIENT FEEDBACK FORM
