@@ -38,13 +38,24 @@ function closeCart() {
 
 // Clear cart
 function clearCart() {
+  if (cart.length === 0) {
+    alert("There is no item in your cart.");
+    return;
+  }
+
+  // Clear cart array
+  cart = [];
+
+  // Remove from sessionStorage
   sessionStorage.removeItem("cart");
+
+  // Update cart display if open
   const cartList = document.getElementById("cartItems");
-  if (cartList) cartList.innerHTML = "";
-  alert("Cart has been cleared.");
-  else cart = [];
-  sessionStorage.removeItem("cart");
-  document.getElementById("cartItems").innerHTML = "<li>Your cart is empty.</li>";
+  if (cartList) {
+    cartList.innerHTML = "<li>Your cart is empty.</li>";
+  }
+
+  alert("Your cart has been cleared.");
   closeCart();
 }
 // Process order
