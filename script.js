@@ -36,13 +36,15 @@ function closeCart() {
   document.getElementById("cartModal").style.display = "none";
 }
 
-
 // Clear cart
 function clearCart() {
   sessionStorage.removeItem("cart");
   const cartList = document.getElementById("cartItems");
   if (cartList) cartList.innerHTML = "";
   alert("Cart has been cleared.");
+  else cart = [];
+  sessionStorage.removeItem("cart");
+  document.getElementById("cartItems").innerHTML = "<li>Your cart is empty.</li>";
   closeCart();
 }
 // Process order
