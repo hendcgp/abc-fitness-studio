@@ -36,13 +36,15 @@ function closeCart() {
   document.getElementById("cartModal").style.display = "none";
 }
 
+
 // Clear cart
 function clearCart() {
-  cart = [];
   sessionStorage.removeItem("cart");
-  document.getElementById("cartItems").innerHTML = "<li>Your cart is empty.</li>";
+  const cartList = document.getElementById("cartItems");
+  if (cartList) cartList.innerHTML = "";
+  alert("Cart has been cleared.");
+  closeCart();
 }
-
 // Process order
 function processOrder() {
   if (cart.length === 0) {
