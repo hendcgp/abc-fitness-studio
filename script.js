@@ -4,7 +4,7 @@ let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 function addToCart(itemName) {
   cart.push(itemName);
   sessionStorage.setItem("cart", JSON.stringify(cart));
-  alert("Item added."+ itemList);
+  alert(`${itemName} has been added to your cart.`);
 }
 
 // Open cart modal
