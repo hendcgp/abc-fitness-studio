@@ -17,6 +17,8 @@ function viewCart() {
   const cartItems = document.getElementById('cartItems');
   cartItems.innerHTML = '';
 
+  cart = JSON.parse(localStorage.getItem('cart')) || [];
+
   if (cart.length === 0) {
     const li = document.createElement('li');
     li.textContent = 'Your cart is empty.';
@@ -35,27 +37,34 @@ function viewCart() {
 
 // Close cart modal
 function closeCart() {
-  const modal = document.getElementById('cartModal');
-  modal.style.display = 'none';
+  document.getElementById('cartModal').style.display = 'none';
 }
 
 // Clear cart
 function clearCart() {
   cart = [];
   localStorage.removeItem('cart');
-  document.getElementById('cartItems').innerHTML = '';
+  document.getElementById('cartItems').innerHTML = '<li>Your cart is empty.</li>';
 }
 
 // Process order
 function processOrder() {
+  cart = JSON.parse(localStorage.getItem('cart')) || [];
+
   if (cart.length === 0) {
     alert('Your cart is empty!');
     return;
   }
-  alert('Thank you for your order!');
+
+  const itemList = cart.join(', ');
+  alert(
+    `Thank you for your order!\n\nYour order of the following items has been processed:\n${itemList}`
+  );
+
   clearCart();
   closeCart();
 }
+
 
 /* ============================
    FEEDBACK / CONTACT FORM
