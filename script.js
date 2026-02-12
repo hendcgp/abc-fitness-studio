@@ -1,6 +1,6 @@
-// ============================
-// SHOPPING CART FUNCTIONS
-// ============================
+/* ============================
+   SHOPPING CART
+============================ */
 
 let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
@@ -11,8 +11,9 @@ function addToCart(itemName) {
   alert(`${itemName} has been added to your cart.`);
 }
 
-// Open cart modal
+// View cart modal
 function openCart() {
+  cart = JSON.parse(sessionStorage.getItem("cart")) || [];
   const cartList = document.getElementById("cartItems");
   cartList.innerHTML = "";
 
@@ -38,18 +39,18 @@ function closeCart() {
 
 // Clear cart
 function clearCart() {
+  cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+
   if (cart.length === 0) {
     alert("There is no item in your cart.");
     return;
   }
 
-  // Clear cart array
+  // Clear cart
   cart = [];
-
-  // Remove from sessionStorage
   sessionStorage.removeItem("cart");
 
-  // Update cart display if open
+  // Update cart display if modal is open
   const cartList = document.getElementById("cartItems");
   if (cartList) {
     cartList.innerHTML = "<li>Your cart is empty.</li>";
@@ -58,8 +59,11 @@ function clearCart() {
   alert("Your cart has been cleared.");
   closeCart();
 }
+
 // Process order
 function processOrder() {
+  cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+
   if (cart.length === 0) {
     alert("Your cart is empty!");
     return;
@@ -67,50 +71,38 @@ function processOrder() {
 
   const itemList = cart.join(", ");
   alert(
-    "Thank you for your order!\n\nYour order of the following items has been processed:\n" + itemList
+    `Thank you for your order!\n\nYour order of the following items has been processed:\n${itemList}`
   );
 
-  clearCart();
+  // Clear after order
+  cart = [];
+  sessionStorage.removeItem("cart");
   closeCart();
 }
-// ============================
-// SUBSCRIBE FORM
-// ============================
-// Newsletter subscribe
-document.addEventListener("DOMContentLoaded", function () {
+
+/* ============================
+   SUBSCRIBE FORM
+============================ */
+document.addEventListener("DOMContentLoaded", () => {
   const subscribeForm = document.getElementById("subscribe-form");
-  const subscribeEmail = document.getElementById("subscribeEmail");
-
   if (subscribeForm) {
-    subscribeForm.addEventListener("submit", function (event) {
-      event.preventDefault();
+    subscribeForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById("subscribeEmail");
+      const email = emailInput.value.trim();
 
-      const email = subscribeEmail.value.trim();
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address.");
-        return;
+      if (email) {
+        alert(`Thank you for subscribing, ${email}!`);
+        subscribeForm.reset();
       }
-
-      alert(`Thank you for subscribing, ${email}!`);
-      subscribeForm.reset();
     });
   }
 });
 
-// Close modal when clicking outside
-window.onclick = function (event) {
-  const modal = document.getElementById("cartModal");
-  if (event.target === modal) {
-    modal.style.display = "none";
-  }
-};
-
-// ============================
-// CLICK OUTSIDE MODAL TO CLOSE
-// ============================
-window.onclick = function (event) {
+/* ============================
+   MODAL CLICK OUTSIDE TO CLOSE
+============================ */
+window.onclick = function(event) {
   const modal = document.getElementById("cartModal");
   if (event.target === modal) {
     modal.style.display = "none";
