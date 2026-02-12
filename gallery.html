@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
 <header>
   <div class="header-container">
     <div class="header-left">
@@ -24,6 +25,7 @@
 </header>
 
 <main>
+  <!-- View Cart aligned right -->
   <div style="width: 100%; text-align: right; margin-bottom: 15px;">
     <button class="view-cart-btn" onclick="openCart()">View Cart</button>
   </div>
@@ -75,8 +77,8 @@
         <button onclick="addToCart('Water Bottle')">Add to Cart</button>
       </td>
       <td>
-        <img src="images/Pic_09_Client2_TeeShirt.png" alt="T-Shirt">
-        <h3>T-Shirt</h3>
+        <img src="images/PIc_09_Client2_TeeShirt.png" alt="T-Shirt">
+        <h3>Tee Shirt</h3>
         <button onclick="addToCart('Tee Shirt')">Add to Cart</button>
       </td>
     </tr>
@@ -99,6 +101,7 @@
   </div>
 </footer>
 
+<!-- Cart Modal -->
 <div id="cartModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeCart()">&times;</span>
