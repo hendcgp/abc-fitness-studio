@@ -65,28 +65,15 @@
   <!-- Script -->
   <script>
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const subscribeForm = document.getElementById("subscribe-form");
-      if (subscribeForm) {
-        subscribeForm.addEventListener("submit", (e) => {
-          e.preventDefault();
-          const emailInput = document.getElementById("subscribeEmail");
-          const email = emailInput.value.trim();
-
-          // Email validation regex
-          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-          if (!emailPattern.test(email)) {
-            alert("Please enter a valid email address.");
-            return;
-          }
-
-          alert(`Thank you for subscribing, ${email}!`);
-          subscribeForm.reset();
-        });
-      }
-    });
-  </script>
-
+     // Subscribe Form
+  document.getElementById("subscribe-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const email = document.getElementById("subscribeEmail").value.trim();
+    if (email) {
+      alert(`Thank you for subscribing, ${email}!`);
+      this.reset();
+    }
+  });
+</script>
 </body>
 </html>
