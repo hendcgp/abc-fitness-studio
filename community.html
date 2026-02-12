@@ -57,12 +57,17 @@
     
 </footer>
 
-  <script>
+ <script>
+
+     // Subscribe Form
   document.getElementById("subscribe-form").addEventListener("submit", function(event) {
-  event.preventDefault();
-  alert("Thank you for subscribing!");
-  this.reset();
-});
+    event.preventDefault();
+    const email = document.getElementById("subscribeEmail").value.trim();
+    if (email) {
+      alert(`Thank you for subscribing, ${email}!`);
+      this.reset();
+    }
+  });
 </script>
 </body>
 </html>
